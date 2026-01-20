@@ -1,0 +1,24 @@
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - task: DownloadSecureFile@1
+    name: keystore
+    inputs:
+      secureFile: 'stc-turtle-tracker.keystore'
+
+  - task: DownloadSecureFile@1
+    name: keystoreProps
+    inputs:
+      secureFile: 'stc-turtle-tracker-keystore.properties'
+
+  - script: |
+      mkdir output
+      cp "$(keystore.secureFilePath)" output/
+      cp "$(keystoreProps.secureFilePath)" output/
+    displayName: 'Copy secure files to output folder'
+
+  - publish: output
+    artifact: secure-files
