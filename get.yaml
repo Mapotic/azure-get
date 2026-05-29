@@ -7,12 +7,12 @@ steps:
   - task: DownloadSecureFile@1
     name: keystore
     inputs:
-      secureFile: 'stc-turtle-tracker.keystore'
+      secureFile: 'camperguru.keystore'
 
   - task: DownloadSecureFile@1
     name: keystoreProps
     inputs:
-      secureFile: 'stc-turtle-tracker-keystore.properties'
+      secureFile: 'camperguru-keystore.properties'
 
   - script: |
       mkdir output
